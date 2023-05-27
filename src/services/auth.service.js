@@ -1,18 +1,20 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/auth/";
+const API_URL = "http://localhost:4000/api/v1";
 
-const register = (username, email, password) => {
-  return axios.post(API_URL + "signup", {
+const signup = (name, username, email, password, grade) => {
+  return axios.put(API_URL + "/auth/signup", {
+    name,
     username,
     email,
     password,
+    grade
   });
 };
 
 const login = (username, password) => {
   return axios
-    .post(API_URL + "signin", {
+    .post(API_URL + "/auth/login", {
       username,
       password,
     })
@@ -30,7 +32,7 @@ const logout = () => {
 };
 
 export default {
-  register,
+  signup,
   login,
   logout,
 };

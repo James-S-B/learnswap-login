@@ -28,6 +28,15 @@ const validEmail = (value) => {
   }
 };
 
+const vGrade = (value) => {
+  if (value < 7 || value > 15) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        The name must be between 6 and 14 characters.
+      </div>
+    );
+  }
+};
 const vusername = (value) => {
   if (value.length < 3 || value.length > 20) {
     return (
@@ -53,13 +62,20 @@ const Register = () => {
   const checkBtn = useRef();
 
   const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [successful, setSuccessful] = useState(false);
+  const [grade, setGrade] = useState(false);
+
 
   const { message } = useSelector(state => state.message);
   const dispatch = useDispatch();
 
+  const onChangeName = (e) => {
+    const name = e.target.value;
+    setName(name);
+  };
   const onChangeUsername = (e) => {
     const username = e.target.value;
     setUsername(username);
@@ -75,6 +91,11 @@ const Register = () => {
     setPassword(password);
   };
 
+  const onChangeGrade = (e) => {
+    const grade = e.target.value;
+    setGrade(grade);
+  };
+
   const handleRegister = (e) => {
     e.preventDefault();
 
@@ -83,7 +104,7 @@ const Register = () => {
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      dispatch(register(username, email, password))
+      dispatch(register(username, email, password, name))
         .then(() => {
           setSuccessful(true);
         })
@@ -105,6 +126,18 @@ const Register = () => {
         <Form onSubmit={handleRegister} ref={form}>
           {!successful && (
             <div>
+               <div className="form-group">
+                <label htmlFor="name">Name</label>
+                <Input
+                  type="name"
+                  className="form-control"
+                  name="name"
+                  value={name}
+                  onChange={onChangeName}
+                  validations={[required]}
+                />
+              </div>
+
               <div className="form-group">
                 <label htmlFor="username">Username</label>
                 <Input
@@ -138,6 +171,19 @@ const Register = () => {
                   value={password}
                   onChange={onChangePassword}
                   validations={[required, vpassword]}
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="grade">Grade</label>
+                <Input
+                  type="number"
+                  className="form-control"
+                  name="grade"
+                  value={grade}
+                  onChange={onChangeGrade}
+                  validations={[required, vGrade]}
+                 
                 />
               </div>
 
