@@ -29,10 +29,10 @@ const validEmail = (value) => {
 };
 
 const vGrade = (value) => {
-  if (value < 7 || value > 15) {
+  if (value < 1 || value > 12) {
     return (
       <div className='alert alert-danger' role='alert'>
-        The name must be between 6 and 14 characters.
+        This for is for student in grades 1 through 12.
       </div>
     );
   }
