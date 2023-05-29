@@ -6,7 +6,7 @@ import {
   DELETE_ALL_POSTS,
 } from '../actions/types';
 
-const initialState = [];
+const initialState = [{ type: RETRIEVE_POSTS }];
 
 const postReducer = (posts = initialState, action) => {
   const { type, payload } = action;

@@ -150,10 +150,10 @@ const App = () => {
           <Route path='/user' element={<BoardUser />} />
           <Route path='/mod' element={<BoardModerator />} />
           <Route path='/admin' element={<BoardAdmin />} />
-          <Route path='/' component={PostsList} />
-          <Route path='/posts' component={PostsList} />
-          <Route path='/add' component={AddPost} />
-          <Route path='/posts/:id' component={Post} />
+          <Route path='/' element={<PostsList />} />
+          <Route path='/posts' element={<PostsList />} />
+          <Route path='/add' element={<AddPost />} />
+          <Route path='/posts/:id' element={<Post />} />
         </Routes>
       </div>
 
