@@ -76,8 +76,8 @@ const PostsList = () => {
         <h4>Posts List</h4>
 
         <ul className='list-group'>
-          {posts &&
-            posts.map((post, index) => (
+          {posts.payload &&
+            posts.payload.map((post, index) => (
               <li
                 className={
                   'list-group-item ' + (index === currentIndex ? 'active' : '')
