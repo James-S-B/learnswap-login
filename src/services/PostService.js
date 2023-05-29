@@ -4,31 +4,31 @@ import authHeader from './auth-header';
 const API_URL = `${process.env.REACT_APP_API_URL}`;
 
 const getAll = () => {
-  return http.get('/posts');
+  return axios.get(API_URL + '/posts');
 };
 
 const get = (id) => {
-  return http.get(`/posts/${id}`);
+  return axios.get(API_URL + `/posts/${id}`);
 };
 
 const create = (data) => {
-  return http.post('/posts', data);
+  return axios.post(API_URL + '/posts', data);
 };
 
 const update = (id, data) => {
-  return http.put(`/posts/${id}`, data);
+  return axios.put(API_URL + `/posts/${id}`, data);
 };
 
 const remove = (id) => {
-  return http.delete(`/posts/${id}`);
+  return axios.delete(API_URL + `/posts/${id}`);
 };
 
 const removeAll = () => {
-  return http.delete(`/posts`);
+  return axios.delete(API_URL + `/posts`);
 };
 
 const findByTitle = (title) => {
-  return http.get(`/posts?title=${title}`);
+  return axios.get(API_URL + `/posts?title=${title}`);
 };
 
 const PostService = {

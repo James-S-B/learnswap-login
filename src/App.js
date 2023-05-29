@@ -140,7 +140,7 @@ const App = () => {
 
       <div className='container mt-3'>
         <Routes>
-          <Route path='/' element={<Navigate replace to='/Login' />} />
+          {/* <Route path='/' element={<Navigate replace to='/login' />} /> */}
 
           {/* <Route path='/' element={<Home />} /> */}
           <Route path='/home' element={<Home />} />
@@ -150,7 +150,8 @@ const App = () => {
           <Route path='/user' element={<BoardUser />} />
           <Route path='/mod' element={<BoardModerator />} />
           <Route path='/admin' element={<BoardAdmin />} />
-          <Route path={['/', '/posts']} component={PostsList} />
+          <Route path='/' component={PostsList} />
+          <Route path='/posts' component={PostsList} />
           <Route path='/add' component={AddPost} />
           <Route path='/posts/:id' component={Post} />
         </Routes>
