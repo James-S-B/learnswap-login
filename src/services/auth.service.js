@@ -1,26 +1,26 @@
-import axios from "axios";
+import axios from 'axios';
 
-const API_URL = "http://localhost:4000/api/v1";
+const API_URL = `${process.env.REACT_APP_API_URL}`;
 
 const signup = (name, username, email, password, grade) => {
-  return axios.put(API_URL + "/auth/signup", {
+  return axios.put(API_URL + '/auth/signup', {
     name,
     username,
     email,
     password,
-    grade
+    grade,
   });
 };
 
 const login = (username, password) => {
   return axios
-    .post(API_URL + "/auth/login", {
+    .post(API_URL + '/auth/login', {
       username,
       password,
     })
     .then((response) => {
       if (response.data.accessToken) {
-        localStorage.setItem("user", JSON.stringify(response.data));
+        localStorage.setItem('user', JSON.stringify(response.data));
       }
 
       return response.data;
@@ -28,7 +28,7 @@ const login = (username, password) => {
 };
 
 const logout = () => {
-  localStorage.removeItem("user");
+  localStorage.removeItem('user');
 };
 
 export default {

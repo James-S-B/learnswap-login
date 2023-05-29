@@ -13,6 +13,10 @@ import BoardUser from './components/BoardUser';
 import BoardModerator from './components/BoardModerator';
 import BoardAdmin from './components/BoardAdmin';
 
+import AddPost from './components/AddPost';
+import Post from './components/Post';
+import PostsList from './components/PostsList';
+
 import { logout } from './actions/auth';
 import { clearMessage } from './actions/message';
 
@@ -39,13 +43,13 @@ const App = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (currentUser) {
-      setShowModeratorBoard(currentUser.roles.includes('ROLE_MODERATOR'));
-      setShowAdminBoard(currentUser.roles.includes('ROLE_ADMIN'));
-    } else {
-      setShowModeratorBoard(false);
-      setShowAdminBoard(false);
-    }
+    // if (currentUser) {
+    //   setShowModeratorBoard(currentUser.roles.includes('ROLE_MODERATOR'));
+    //   setShowAdminBoard(currentUser.roles.includes('ROLE_ADMIN'));
+    // } else {
+    //   setShowModeratorBoard(false);
+    //   setShowAdminBoard(false);
+    // }
 
     EventBus.on('logout', () => {
       logOut();
@@ -120,6 +124,16 @@ const App = () => {
                 Sign Up
               </Link>
             </li>
+            <li className='nav-item'>
+              <Link to={'/posts'} className='nav-link'>
+                Posts
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link to={'/add'} className='nav-link'>
+                Add
+              </Link>
+            </li>
           </div>
         )}
       </nav>
@@ -128,7 +142,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Navigate replace to='/Login' />} />
 
-          <Route path='/' element={<Home />} />
+          {/* <Route path='/' element={<Home />} /> */}
           <Route path='/home' element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
@@ -136,6 +150,9 @@ const App = () => {
           <Route path='/user' element={<BoardUser />} />
           <Route path='/mod' element={<BoardModerator />} />
           <Route path='/admin' element={<BoardAdmin />} />
+          <Route path={['/', '/posts']} component={PostsList} />
+          <Route path='/add' component={AddPost} />
+          <Route path='/posts/:id' component={Post} />
         </Routes>
       </div>
 
