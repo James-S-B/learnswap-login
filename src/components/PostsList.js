@@ -90,9 +90,9 @@ const PostsList = () => {
             ))}
         </ul>
 
-        <button className='m-3 btn btn-sm btn-danger' onClick={removeAllPosts}>
+        {/* <button className='m-3 btn btn-sm btn-danger' onClick={removeAllPosts}>
           Remove All
-        </button>
+        </button> */}
       </div>
       <div className='col-md-6'>
         {currentPost ? (

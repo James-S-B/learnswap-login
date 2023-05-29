@@ -60,6 +60,7 @@ const App = () => {
     };
   }, [currentUser, logOut]);
 
+
   return (
     <div>
       <nav className='navbar navbar-expand navbar-dark bg-dark'>
@@ -89,20 +90,25 @@ const App = () => {
             </li>
           )}
 
-          {currentUser && (
+          {/* {currentUser && (
             <li className='nav-item'>
               <Link to={'/user'} className='nav-link'>
                 User
               </Link>
             </li>
-          )}
+          )} */}
         </div>
 
         {currentUser ? (
           <div className='navbar-nav ml-auto'>
             <li className='nav-item'>
               <Link to={'/profile'} className='nav-link'>
-                {currentUser.username}
+                {currentUser.name}
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link to={'/add'} className='nav-link'>
+                Add
               </Link>
             </li>
             <li className='nav-item'>
@@ -125,9 +131,9 @@ const App = () => {
               </Link>
             </li>
             <li className='nav-item'>
-              <Link to={'/posts'} className='nav-link'>
+              {/* <Link to={'/posts'} className='nav-link'>
                 Posts
-              </Link>
+              </Link> */}
             </li>
             <li className='nav-item'>
               <Link to={'/add'} className='nav-link'>

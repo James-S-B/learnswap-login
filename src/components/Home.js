@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import PostsList from "./PostsList";
 import UserService from "../services/user.service";
 
 const Home = () => {
@@ -24,7 +24,7 @@ const Home = () => {
   return (
     <div className="container">
       <header className="jumbotron">
-        <h3>{content}</h3>
+      <PostsList></PostsList>
       </header>
     </div>
   );
