@@ -4,6 +4,12 @@ import { Routes, Route, Link, useLocation } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import { BrowserRouter as Router } from "react-router-dom";
+
+
+import AddPost from "./components/AddPost";
+import Post from "./components/Post";
+import PostsList from "./components/PostsList";
 
 import Login from "./components/Login";
 import Signup from "./components/Signup";
