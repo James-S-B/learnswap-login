@@ -4,10 +4,10 @@ import { createPost } from '../actions/posts';
 
 const AddPost = () => {
   const initialPostState = {
-    id: null,
+    UserId: '',
     title: '',
-    description: '',
-    published: false,
+    content: '',
+    parentId: '',
   };
   const [post, setPost] = useState(initialPostState);
   const [submitted, setSubmitted] = useState(false);
@@ -20,15 +20,15 @@ const AddPost = () => {
   };
 
   const savePost = () => {
-    const { title, description } = post;
+    const { title, content, parentId, UserId } = post;
 
-    dispatch(createPost(title, description))
+    dispatch(createPost(title, content, parentId, UserId))
       .then((data) => {
         setPost({
-          id: data.id,
+          Userid: JSON.parse(localStorage.getItem("user")).id,
           title: data.title,
           content: data.description,
-          published: data.published,
+          parentId: null
         });
         setSubmitted(true);
 
@@ -69,15 +69,15 @@ const AddPost = () => {
           </div>
 
           <div className='form-group'>
-            <label htmlFor='description'>Description</label>
+            <label htmlFor='content'>Content</label>
             <input
               type='text'
               className='form-control'
-              id='description'
+              id='content'
               required
-              value={post.description}
+              value={post.content}
               onChange={handleInputChange}
-              name='description'
+              name='content'
             />
           </div>
 

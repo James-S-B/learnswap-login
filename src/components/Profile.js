@@ -6,6 +6,7 @@ const Profile = () => {
   const { user: currentUser } = useSelector((state) => state.auth);
 
   localStorage.setItem("name", currentUser.name);
+  localStorage.setItem("token", currentUser.accessToken);
 
   if (!currentUser) {
     return <Navigate to='/login' />;

@@ -7,7 +7,7 @@ import './App.css';
 
 import Login from './components/Login';
 import Signup from './components/Signup';
-import Home from './components/Home';
+import About from './components/About';
 import Profile from './components/Profile';
 import BoardUser from './components/BoardUser';
 import BoardModerator from './components/BoardModerator';
@@ -64,12 +64,12 @@ const App = () => {
   return (
     <div>
       <nav className='navbar navbar-expand navbar-dark bg-dark'>
-        <Link to={'/'} className='navbar-brand'>
+        <Link to={'/About'} className='navbar-brand'>
           Learn Swap
         </Link>
         <div className='navbar-nav mr-auto'>
           <li className='nav-item'>
-            <Link to={'/home'} className='nav-link'>
+            <Link to={'/posts'} className='nav-link'>
               Home
             </Link>
           </li>
@@ -149,15 +149,16 @@ const App = () => {
           {/* <Route path='/' element={<Navigate replace to='/login' />} /> */}
 
           {/* <Route path='/' element={<Home />} /> */}
-          <Route path='/home' element={<PostsList />} />
+          <Route path='/about' element={<About />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/user' element={<BoardUser />} />
           <Route path='/mod' element={<BoardModerator />} />
           <Route path='/admin' element={<BoardAdmin />} />
-          <Route path='/' element={<PostsList />} />
+          <Route path='/' element={<About />} />
           <Route path='/posts' element={<PostsList />} />
+          <Route path='/' element={<PostsList />} />
           <Route path='/add' element={<AddPost />} />
           <Route path='/posts/:id' element={<Post />} />
         </Routes>

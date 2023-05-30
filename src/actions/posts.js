@@ -10,7 +10,7 @@ import PostDataService from '../services/PostService';
 
 export const createPost = (title, description) => async (dispatch) => {
   try {
-    const res = await PostDataService.create({ title, description });
+    const res = await PostDataService.create({ title, content, parentId, UserId});
 
     dispatch({
       type: CREATE_POST,
