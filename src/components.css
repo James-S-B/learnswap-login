@@ -1,6 +1,6 @@
 .jumbotron {
     background-color: rgb(73, 121, 142);
-    color: #f9ffdd; font-family: 'Helvetica Neue', sans-serif; font-size: 55px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: 25%;
+    color: #f9ffdd; font-family: 'Helvetica Neue', sans-serif; font-size: 55px; font-weight: bold; letter-spacing: -1px; line-height: 1; 
 }
 
 body {
@@ -11,3 +11,16 @@ body {
 p {
     font-style: oblique;
 }
+
+#aboutus {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: medium;
+    color: black;
+    margin-right: 10%;
+  
+  }
+  .container {
+    display: flex;
+  flex-direction: row;
+  justify-content: center;
+  }
