@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import ReactPaginate from 'react-paginate';
 import {
   retrievePosts,
   findPostsByTitle,
@@ -11,9 +12,76 @@ const PostsList = () => {
   const [currentPost, setCurrentPost] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(-1);
   const [searchTitle, setSearchTitle] = useState('');
-
+  const [pageNumber, setPageNumer] = useState(0);
+  const postsPerPage = 8;
+  const pagesVisited = pageNumber * postsPerPage;
   const posts = useSelector((state) => state.posts);
   const dispatch = useDispatch();
+  const displayPosts = posts.payload(pagesVisited, pagesVisited + postsPerPage).map((post) => {
+     return (
+      <><div className='col-md-6'>
+         <h4>Posts List</h4>
+
+         <ul className='list-group'>
+           {posts &&
+             posts.map((post, index) => (
+               <li
+                 className={'list-group-item ' + (index === currentIndex ? 'active' : '')}
+                 onClick={() => setActivePost(post, index)}
+                 key={index}
+               >
+                 {post.title}
+               </li>
+             ))}
+         </ul>
+
+         {/* <button className='m-3 btn btn-sm btn-danger' onClick={removeAllPosts}>
+      Remove All
+    </button> */}
+       </div><div className='col-md-6'>
+           {currentPost ? (
+             <div>
+               <h4>Post</h4>
+               <div>
+                 <label>
+                   <strong>Title:</strong>
+                 </label>{' '}
+                 {currentPost.title}
+               </div>
+               <div>
+                 <label>
+                   <strong>Description:</strong>
+                 </label>{' '}
+                 {currentPost.description}
+               </div>
+               <div>
+                 <label>
+                   <strong>Status:</strong>
+                 </label>{' '}
+                 {currentPost.published ? 'Published' : 'Pending'}
+               </div>
+
+               <Link
+                 to={'/posts/' + currentPost.id}
+                 className='badge badge-warning'
+               >
+                 Edit
+               </Link>
+             </div>
+           ) : (
+             <div>
+               <br />
+               <p>Please click on a Post...</p>
+             </div>
+           )}
+         </div></>
+     )
+  }
+
+
+  )
+  console.log("POSTS",posts);
+
 
   useEffect(() => {
     dispatch(retrievePosts());
@@ -69,68 +137,11 @@ const PostsList = () => {
             >
               Search
             </button>
+            <div>{displayPosts}</div>
           </div>
         </div>
       </div>
-      <div className='col-md-6'>
-        <h4>Posts List</h4>
-
-        <ul className='list-group'>
-          {posts.payload &&
-            posts.payload.map((post, index) => (
-              <li
-                className={
-                  'list-group-item ' + (index === currentIndex ? 'active' : '')
-                }
-                onClick={() => setActivePost(post, index)}
-                key={index}
-              >
-                {post.title}
-              </li>
-            ))}
-        </ul>
-
-        {/* <button className='m-3 btn btn-sm btn-danger' onClick={removeAllPosts}>
-          Remove All
-        </button> */}
-      </div>
-      <div className='col-md-6'>
-        {currentPost ? (
-          <div>
-            <h4>Post</h4>
-            <div>
-              <label>
-                <strong>Title:</strong>
-              </label>{' '}
-              {currentPost.title}
-            </div>
-            <div>
-              <label>
-                <strong>Description:</strong>
-              </label>{' '}
-              {currentPost.content}
-            </div>
-            <div>
-              <label>
-                <strong>Status:</strong>
-              </label>{' '}
-              {currentPost.published ? 'Published' : 'Pending'}
-            </div>
-
-            <Link
-              to={'/posts/' + currentPost.id}
-              className='badge badge-warning'
-            >
-              Edit
-            </Link>
-          </div>
-        ) : (
-          <div>
-            <br />
-            <p>Please click on a Post...</p>
-          </div>
-        )}
-      </div>
+      
     </div>
   );
 };

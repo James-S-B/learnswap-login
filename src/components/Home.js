@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PostsList from "./PostsList";
 import UserService from "../services/user.service";
+import "../components.css"
 
 const Home = () => {
   const [content, setContent] = useState("");
@@ -24,7 +25,10 @@ const Home = () => {
   return (
     <div className="container">
       <header className="jumbotron">
+        Learn Swap 
       </header>
+      <h3>Our Goal</h3>
+      <h1>By: James Benerofe</h1>
     </div>
   );
 };
