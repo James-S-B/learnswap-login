@@ -26,7 +26,7 @@ export const createPost = (title, description) => async (dispatch) => {
 export const retrievePosts = () => async (dispatch) => {
   try {
     const res = await PostDataService.getAll();
-git 
+ 
     dispatch({
       type: RETRIEVE_POSTS,
       payload: res.data,

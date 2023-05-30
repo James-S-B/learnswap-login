@@ -108,7 +108,7 @@ const PostsList = () => {
               <label>
                 <strong>Description:</strong>
               </label>{' '}
-              {currentPost.description}
+              {currentPost.content}
             </div>
             <div>
               <label>

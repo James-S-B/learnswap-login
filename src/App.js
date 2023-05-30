@@ -103,7 +103,7 @@ const App = () => {
           <div className='navbar-nav ml-auto'>
             <li className='nav-item'>
               <Link to={'/profile'} className='nav-link'>
-                {currentUser.name}
+                Hi, {currentUser.name}
               </Link>
             </li>
             <li className='nav-item'>
@@ -135,11 +135,11 @@ const App = () => {
                 Posts
               </Link> */}
             </li>
-            <li className='nav-item'>
+            {/* <li className='nav-item'>
               <Link to={'/add'} className='nav-link'>
                 Add
               </Link>
-            </li>
+            </li> */}
           </div>
         )}
       </nav>
@@ -149,7 +149,7 @@ const App = () => {
           {/* <Route path='/' element={<Navigate replace to='/login' />} /> */}
 
           {/* <Route path='/' element={<Home />} /> */}
-          <Route path='/home' element={PostsList} />
+          <Route path='/home' element={<PostsList />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/profile' element={<Profile />} />

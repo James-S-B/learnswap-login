@@ -27,7 +27,7 @@ const AddPost = () => {
         setPost({
           id: data.id,
           title: data.title,
-          description: data.description,
+          content: data.description,
           published: data.published,
         });
         setSubmitted(true);
