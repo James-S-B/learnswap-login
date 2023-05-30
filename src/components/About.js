@@ -30,10 +30,10 @@ const About = () => {
       <div className="container">
       <div className="jumbotron" id="aboutus">
       <h3>Our Goal</h3>
-      <p>The goal of Learn Swap is to have students asking questions on school work on Learn Swap, and upperclasmen helping them with their work. We believe that you shouldn't have to wait and fear if you've gotten the answer right.</p>
+      <p>The goal of Learn Swap is to have students asking questions on school work on Learn Swap, and upperclassmen helping them with their work. We believe that you shouldn't have to wait and fear if you've gotten the answer right.</p>
       </div>
       <div className="jumbotron"> 
-      <h3>Our Modo</h3>
+      <h3>Our Motto</h3>
       <p>
       Education Never Sleeps.
         </p>

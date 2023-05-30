@@ -8,6 +8,7 @@ const AddPost = () => {
     title: '',
     content: '',
     parentId: '',
+    username: '',
   };
   const [post, setPost] = useState(initialPostState);
   const [submitted, setSubmitted] = useState(false);
@@ -20,16 +21,17 @@ const AddPost = () => {
   };
 
   const savePost = () => {
-    const { title, content, parentId, UserId } = post;
+    const { title, content, parentId, UserId, username} = post;
 
-    dispatch(createPost(title, content, parentId, UserId))
+    dispatch(createPost(title, content, parentId, UserId, username))
       .then((data) => {
         setPost({
           UserId: JSON.parse(localStorage.getItem('user')).userID,
           title: data.title,
           content: data.description,
           parentId: parentId,
-        });
+          username: localStorage.getItem("username"),
+                });
         setSubmitted(true);
 
         console.log(data);

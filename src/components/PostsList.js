@@ -123,6 +123,16 @@ const PostsList = () => {
             >
               Edit
             </Link>
+
+            <div>
+            <label>
+              <strong>Asker:</strong>
+            </label>{' '}
+            {currentPost.username}
+
+
+          </div>
+
           </div>
         ) : (
           <div>
