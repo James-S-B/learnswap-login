@@ -25,10 +25,10 @@ const AddPost = () => {
     dispatch(createPost(title, content, parentId, UserId))
       .then((data) => {
         setPost({
-          Userid: JSON.parse(localStorage.getItem("user")).id,
+          UserId: JSON.parse(localStorage.getItem('user')).userID,
           title: data.title,
           content: data.description,
-          parentId: null
+          parentId: parentId,
         });
         setSubmitted(true);
 
