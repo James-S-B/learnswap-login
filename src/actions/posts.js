@@ -8,25 +8,31 @@ import {
 
 import PostDataService from '../services/PostService';
 
-export const createPost = (title, description) => async (dispatch) => {
-  try {
-    const res = await PostDataService.create({ title, content, parentId, UserId});
+export const createPost =
+  (title, content, parentId, UserId) => async (dispatch) => {
+    try {
+      const res = await PostDataService.create({
+        title,
+        content,
+        parentId,
+        UserId,
+      });
 
-    dispatch({
-      type: CREATE_POST,
-      payload: res.data,
-    });
+      dispatch({
+        type: CREATE_POST,
+        payload: res.data,
+      });
 
-    return Promise.resolve(res.data);
-  } catch (err) {
-    return Promise.reject(err);
-  }
-};
+      return Promise.resolve(res.data);
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  };
 
 export const retrievePosts = () => async (dispatch) => {
   try {
     const res = await PostDataService.getAll();
- 
+
     dispatch({
       type: RETRIEVE_POSTS,
       payload: res.data,

@@ -12,7 +12,7 @@ const get = (id) => {
 };
 
 const create = (data) => {
-  return axios.post(API_URL + '/posts', data, { headers: authHeader() });
+  return axios.post(API_URL + '/post', data, { headers: authHeader() });
 };
 
 const update = (id, data) => {

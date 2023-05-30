@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { updatePost, deletePost } from '../actions/posts';
 import PostDataService from '../services/PostService';
-import ReactPaginate from 'react-paginate';
+//import ReactPaginate from 'react-paginate';
 
 const Post = (props) => {
   const initialPostState = {

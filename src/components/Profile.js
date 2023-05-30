@@ -5,8 +5,9 @@ import { useSelector } from 'react-redux';
 const Profile = () => {
   const { user: currentUser } = useSelector((state) => state.auth);
 
-  localStorage.setItem("name", currentUser.name);
-  localStorage.setItem("token", currentUser.accessToken);
+  localStorage.setItem('name', currentUser.name);
+  localStorage.setItem('token', currentUser.accessToken);
+  localStorage.setItem('id', currentUser.userID);
 
   if (!currentUser) {
     return <Navigate to='/login' />;
@@ -29,7 +30,10 @@ const Profile = () => {
       <p>
         <strong>Name:</strong> {currentUser.name}
       </p>
-      <strong>Authorities: {currentUser.authorities ? currentUser.authorities : "none"}</strong>
+      <strong>
+        Authorities:{' '}
+        {currentUser.authorities ? currentUser.authorities : 'none'}
+      </strong>
       <ul>
         {currentUser.roles &&
           currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
