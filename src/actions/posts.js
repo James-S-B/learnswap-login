@@ -9,7 +9,11 @@ import {
 import PostDataService from '../services/PostService';
 
 export const createPost =
+<<<<<<< HEAD
   (username, title, content, parentId, UserId) => async (dispatch) => {
+=======
+  (title, content, parentId, UserId, username) => async (dispatch) => {
+>>>>>>> f7fd50fc3c19e022b8fdf414d32184950f5cd428
     try {
       const res = await PostDataService.create({
         username,
@@ -17,6 +21,7 @@ export const createPost =
         content,
         parentId,
         UserId,
+        username,
       });
 
       dispatch({

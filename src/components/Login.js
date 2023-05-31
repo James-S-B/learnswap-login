@@ -24,6 +24,8 @@ const Login = (props) => {
   const form = useRef();
   const checkBtn = useRef();
 
+  
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -36,6 +38,7 @@ const Login = (props) => {
   const onChangeUsername = (e) => {
     const username = e.target.value;
     setUsername(username);
+    localStorage.setItem("username", username);
   };
 
   const onChangePassword = (e) => {
