@@ -34,15 +34,11 @@ const AddPost = () => {
           username: data.username,
           UserId: data.UserId,
           title: data.title,
-          content: data.description,
-          parentId: parentId,
-          username: localStorage.getItem('username'),
+          content: data.content,
+          parentId: data.parentId,
         });
         setSubmitted(true);
-        console.log(
-          'JSON.parse(localStorage.getItem(user)).username = ',
-          JSON.parse(localStorage.getItem('user')).username
-        );
+
         console.log('post = ', post);
       })
       .catch((e) => {

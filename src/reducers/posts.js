@@ -13,7 +13,7 @@ const postReducer = (posts = initialState, action) => {
 
   switch (type) {
     case CREATE_POST:
-      return [...posts, payload];
+      return [posts, payload];
 
     case RETRIEVE_POSTS:
       return payload;
