@@ -4,10 +4,11 @@ import { createPost } from '../actions/posts';
 
 const AddPost = () => {
   const initialPostState = {
-    UserId: '',
+    username: `${JSON.parse(localStorage.getItem('user')).username}`,
+    UserId: JSON.parse(localStorage.getItem('user')).userID,
     title: '',
     content: '',
-    parentId: '',
+    parentId: null,
   };
   const [post, setPost] = useState(initialPostState);
   const [submitted, setSubmitted] = useState(false);
@@ -20,19 +21,28 @@ const AddPost = () => {
   };
 
   const savePost = () => {
-    const { title, content, parentId, UserId } = post;
+    const { username, title, content, parentId, UserId } = post;
 
-    dispatch(createPost(title, content, parentId, UserId))
+    dispatch(createPost(username, title, content, parentId, UserId))
       .then((data) => {
+        // console.log('data1 = ', data);
+        // console.log(
+        //   'data2 = ',
+        //   JSON.parse(localStorage.getItem('user')).username
+        // );
         setPost({
-          UserId: JSON.parse(localStorage.getItem('user')).userID,
+          username: data.username,
+          UserId: data.UserId,
           title: data.title,
           content: data.description,
-          parentId: parentId,
+          parentId: data.parentId,
         });
         setSubmitted(true);
-
-        console.log(data);
+        console.log(
+          'JSON.parse(localStorage.getItem(user)).username = ',
+          JSON.parse(localStorage.getItem('user')).username
+        );
+        console.log('post = ', post);
       })
       .catch((e) => {
         console.log(e);

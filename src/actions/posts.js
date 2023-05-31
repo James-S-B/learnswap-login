@@ -9,9 +9,10 @@ import {
 import PostDataService from '../services/PostService';
 
 export const createPost =
-  (title, content, parentId, UserId) => async (dispatch) => {
+  (username, title, content, parentId, UserId) => async (dispatch) => {
     try {
       const res = await PostDataService.create({
+        username,
         title,
         content,
         parentId,
