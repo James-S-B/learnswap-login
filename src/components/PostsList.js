@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import {
   retrievePosts,
   findPostsByTitle,
   deleteAllPosts,
+  createPost,
 } from '../actions/posts';
 import { Link } from 'react-router-dom';
 
@@ -11,18 +13,59 @@ const PostsList = () => {
   const [currentPost, setCurrentPost] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(-1);
   const [searchTitle, setSearchTitle] = useState('');
+  const [replyList, setReplyList] = useState([]);
+	const [reply, setReply] = useState("");
 
   const posts = useSelector((state) => state.posts);
   const dispatch = useDispatch();
+
+  const AddReply = () => {
+    const initialPostState = {
+      username: `${JSON.parse(localStorage.getItem('user')).username}`,
+      UserId: JSON.parse(localStorage.getItem('user')).userID,
+      content: '',
+      parentId: currentPost.id,
+    };
+    const [post, setPost] = useState(initialPostState);
+    const [submitted, setSubmitted] = useState(false);
+  
+    const dispatch = useDispatch();
+  
+  
+  
+    const savePost = () => {
+      const { username, content, parentId, UserId } = post;
+  
+      dispatch(createPost(username, content, parentId, UserId))
+        .then((data) => {
+         
+          setPost({
+            username: data.username,
+            UserId: data.UserId,
+            content: data.content,
+            parentId: data.parentId,
+          });
+          setSubmitted(true);
+  
+          console.log('post = ', post);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    };
+  
+    const newPost = () => {
+      setPost(initialPostState);
+      setSubmitted(false);
+    };
+
+  }
 
   useEffect(() => {
     dispatch(retrievePosts());
   }, []);
 
-  const onChangeSearchTitle = (e) => {
-    const searchTitle = e.target.value;
-    setSearchTitle(searchTitle);
-  };
+
 
   const refreshData = () => {
     setCurrentPost(null);
@@ -34,15 +77,9 @@ const PostsList = () => {
     setCurrentIndex(index);
   };
 
-  const removeAllPosts = () => {
-    dispatch(deleteAllPosts())
-      .then((response) => {
-        console.log(response);
-        refreshData();
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setCurrentPost({ ...currentPost, [name]: value });
   };
 
   const findByTitle = () => {
@@ -59,7 +96,6 @@ const PostsList = () => {
             className='form-control'
             placeholder='Search by title'
             value={searchTitle}
-            onChange={onChangeSearchTitle}
           />
           <div className='input-group-append'>
             <button
@@ -130,7 +166,33 @@ const PostsList = () => {
             </label>{' '}
             {currentPost.username}
 
+            { <div className='col-md-6' id='replybox'>
+              <span id='replytext'>
+<h6>Reply to thread here</h6></span>
+			
+			<form className='modal__content' onSubmit={handleInputChange}>
+				<textarea rows="5" cols="20"
+					value={reply}
+					onChange={(e) => setReply(e.target.value)}
+					type='text'
+					name='reply'
+					className='modalInput'></textarea>
 
+				<button  className='btn btn-outline-secondary'
+              type='button'>SEND</button>
+			</form>
+
+			<div className='thread__container'>
+				{replyList.map((reply) => (
+					<div className='thread__item'>
+						<p>{reply.text}</p>
+						<div className='react__container'>
+							<p style={{ opacity: "0.5" }}>by {reply.name}</p>
+						</div>
+					</div>
+				))}
+			</div>
+		</div> }
           </div>
 
           </div>
