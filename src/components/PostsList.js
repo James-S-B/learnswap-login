@@ -81,6 +81,7 @@ const PostsList = () => {
     dispatch(findPostsByTitle(searchTitle));
   };
 
+
   return (
     <div className='list row'>
       <div className='col-md-8'>
@@ -107,15 +108,16 @@ const PostsList = () => {
 
         <ul className={`list-group`}>
           {posts.payload &&
-            posts.payload.map((post, index, parentId) => (
-              <li 
+            posts.payload.map((post, index) => (
+              <li
                 className={
+                  
                   'list-group-item ' + (post.parentId ? "reply" : "")
                 }
                 onClick={() => setActivePost(post, index)}
                 key={index}
               >
-                {post.parentId ? '**' : ''}
+                {}
                 {post.title}
               </li>
             ))}

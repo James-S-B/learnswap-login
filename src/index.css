@@ -30,6 +30,7 @@ code {
 
 }
 
-#replytext {
+.reply {
   margin-left: 30px;
+  opacity: 80%;
 }
