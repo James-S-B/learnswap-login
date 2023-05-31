@@ -30,6 +30,7 @@ const Login = (props) => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
+  // const localStorage.setItem("isLoggedIn", useSelector((state) => state.auth))
   const { isLoggedIn } = useSelector((state) => state.auth);
   const { message } = useSelector((state) => state.message);
 
