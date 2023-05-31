@@ -5,12 +5,14 @@ import { useLocation } from 'react-router-dom';
 
 const AddPost = () => {
   const location = useLocation();
-  //   const parentMe = ({ auth }) => {
-  //   const user = auth && auth.user;
-  //   ...
-  // }
-  //   const parentId
-  const { parentId, title } = location.state;
+  //   const parentMessage = ({ location }) => {
+  //     const parentId = location && location.parentId;
+  //     const title = location && location.title;
+  //     return { parentId, title };
+  //   };
+  //const pMessage = parentMessage(location.state);
+  //
+  const { parentId, title } = location.state || {};
   const initialPostState = {
     username: `${JSON.parse(localStorage.getItem('user')).username}`,
     UserId: JSON.parse(localStorage.getItem('user')).userID,
