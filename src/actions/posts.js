@@ -17,7 +17,6 @@ export const createPost =
         content,
         parentId,
         UserId,
-        username,
       });
 
       dispatch({
