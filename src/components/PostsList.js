@@ -115,6 +115,7 @@ const PostsList = () => {
                 onClick={() => setActivePost(post, index)}
                 key={index}
               >
+                {post.parentId ? '**' : ''}
                 {post.title}
               </li>
             ))}
