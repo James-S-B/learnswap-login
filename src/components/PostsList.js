@@ -105,12 +105,12 @@ const PostsList = () => {
       <div className='col-md-6'>
         <h4>Posts List</h4>
 
-        <ul className='list-group'>
+        <ul className={`list-group`}>
           {posts.payload &&
-            posts.payload.map((post, index) => (
-              <li
+            posts.payload.map((post, index, parentId) => (
+              <li 
                 className={
-                  'list-group-item ' + (index === currentIndex ? 'active' : '')
+                  'list-group-item ' + (parentId ? "reply" : "")
                 }
                 onClick={() => setActivePost(post, index)}
                 key={index}
@@ -142,18 +142,18 @@ const PostsList = () => {
               {currentPost.content}
             </div>
             <div>
-              <label>
+              {/* <label>
                 <strong>Status:</strong>
               </label>{' '}
-              {currentPost.published ? 'Published' : 'Pending'}
+              {currentPost.published ? 'Published' : 'Pending'} */}
             </div>
 
-            <Link
+            {/* <Link
               to={'/posts/' + currentPost.id}
               className='badge badge-warning'
             >
               Edit
-            </Link>
+            </Link> */}
 
             <div>
               <label>
