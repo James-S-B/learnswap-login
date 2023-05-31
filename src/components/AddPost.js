@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createPost } from '../actions/posts';
+import { useLocation } from 'react-router-dom';
 
 const AddPost = () => {
+  const location = useLocation();
+  //   const parentMe = ({ auth }) => {
+  //   const user = auth && auth.user;
+  //   ...
+  // }
+  //   const parentId
+  const { parentId, title } = location.state;
   const initialPostState = {
     username: `${JSON.parse(localStorage.getItem('user')).username}`,
     UserId: JSON.parse(localStorage.getItem('user')).userID,
-    title: '',
+    title: title ? 'Re:' + title : '',
     content: '',
-    parentId: null,
+    parentId: parentId ? parentId : null,
   };
   const [post, setPost] = useState(initialPostState);
   const [submitted, setSubmitted] = useState(false);

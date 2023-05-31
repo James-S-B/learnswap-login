@@ -125,14 +125,18 @@ const PostsList = () => {
             </Link>
 
             <div>
-            <label>
-              <strong>Asker:</strong>
-            </label>{' '}
-            {currentPost.username}
-
-
-          </div>
-
+              <label>
+                <strong>Asker:</strong>
+              </label>{' '}
+              {currentPost.username}
+              <Link
+                to={'/add/'}
+                state={{ title: currentPost.title, parentId: currentPost.id }}
+                className='badge badge-warning'
+              >
+                Reply
+              </Link>
+            </div>
           </div>
         ) : (
           <div>
