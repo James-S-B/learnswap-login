@@ -110,7 +110,7 @@ const PostsList = () => {
             posts.payload.map((post, index, parentId) => (
               <li 
                 className={
-                  'list-group-item ' + (parentId ? "reply" : "")
+                  'list-group-item ' + (post.parentId ? "reply" : "")
                 }
                 onClick={() => setActivePost(post, index)}
                 key={index}
